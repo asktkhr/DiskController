@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static final int ITEM_KB = 0;
 	private static final int ITEM_MB = 1;
 	private static final int ITEM_GB = 2;
-	private long KB = 1024;
+	private long KB = 1000;
 	private long MB = KB * KB;
 	private long GB = MB * KB;
 
@@ -67,6 +67,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				refreshView();
 			}
 
 			@Override
@@ -78,11 +79,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void getInternalStorageStatus() {
 		File path = Environment.getDataDirectory();
 		StatFs stat = new StatFs(path.getPath());
-		availableByteSize = (long)stat.getAvailableBlocks() * (long)stat.getBlockSize();
-		totalByteSize = (long)stat.getBlockCount() * (long)stat.getBlockSize();
+		availableByteSize = (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
+		totalByteSize = (long) stat.getBlockCount() * (long) stat.getBlockSize();
 		usageByteSize = totalByteSize - availableByteSize;
 	}
-
 
 	@Override
 	public void onClick(View v) {
@@ -102,13 +102,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 			switch (position) {
 			case ITEM_KB:
-				expectByteSize = expectSize * 1000;
+				expectByteSize = expectSize * KB;
 				break;
 			case ITEM_MB:
-				expectByteSize = expectSize * 1000*1000;
+				expectByteSize = expectSize * MB;
 				break;
 			case ITEM_GB:
-				expectByteSize = expectSize * 1000*1000*1000;
+				expectByteSize = expectSize * GB;
 				break;
 			}
 
@@ -126,7 +126,21 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void refreshView() {
 		getInternalStorageStatus();
-		titleText.setText("available: " + String.valueOf(availableByteSize / KB) + " KB");
+		int position = spinner.getSelectedItemPosition();
+		switch (position) {
+		case ITEM_KB:
+			titleText.setText("available: " + String.valueOf(availableByteSize / KB) + " KB");
+			break;
+		case ITEM_MB:
+			titleText.setText("available: " + String.valueOf(availableByteSize / MB) + " MB");
+			break;
+		case ITEM_GB:
+			titleText.setText("available: " + String.valueOf(availableByteSize / GB) + " GB");
+			break;
+		default:
+			titleText.setText("available: " + String.valueOf(availableByteSize / KB) + " KB");
+		}
+
 	}
 
 }

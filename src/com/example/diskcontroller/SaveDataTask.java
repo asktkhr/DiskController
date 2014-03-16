@@ -23,6 +23,7 @@ public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 		this.activity = activity;
 		dialog = new ProgressDialog(activity);
 		dialog.setMessage("generate dummyfile");
+		dialog.setCancelable(false);
 
 		this.availableByteSize = availableByteSize;
 	}
@@ -42,7 +43,7 @@ public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 			return false;
 		}
 		long chunkSize = getChunkSize(fileByteSize);
-		long divideCount = fileByteSize / chunkSize;
+		long divideCount = (long)Math.ceil(fileByteSize / (float)chunkSize);
 		String str = generateStr(chunkSize);
 		
 		for (long i = 0; i < divideCount; i++) {
