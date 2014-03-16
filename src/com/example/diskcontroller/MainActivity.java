@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static final int ITEM_KB = 0;
 	private static final int ITEM_MB = 1;
 	private static final int ITEM_GB = 2;
-	private long KB = 1000;
+	private long KB = 1024;
 	private long MB = KB * KB;
 	private long GB = MB * KB;
 
