@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DiskController</string>
+    <string name="title"></string>
+    <string name="action_settings">Settings</string>
+    <string name="generate_button">generate</string>
+    <string name="delete_button">delete</string>
+
+</resources>
