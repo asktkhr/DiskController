@@ -8,6 +8,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 
@@ -22,7 +23,7 @@ public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 	public SaveDataTask(MainActivity activity, long availableByteSize) {
 		this.activity = activity;
 		dialog = new ProgressDialog(activity);
-		dialog.setMessage("generate dummyfile");
+		dialog.setMessage("Now processing...");
 		dialog.setCancelable(false);
 
 		this.availableByteSize = availableByteSize;
@@ -87,10 +88,11 @@ public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 		dialog.dismiss();
 		String message = "";
 		if (result) {
-			message = "generate success";
+			message = "Finished!";
 		} else {
-			message = "generate failed";
+			message = "Error occured!";
 		}
+		Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
 		activity.refreshView();
 	}
 

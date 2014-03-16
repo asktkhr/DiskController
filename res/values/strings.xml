@@ -4,7 +4,7 @@
     <string name="app_name">DiskController</string>
     <string name="title"></string>
     <string name="action_settings">Settings</string>
-    <string name="generate_button">generate</string>
-    <string name="delete_button">delete</string>
-
+    <string name="generate_button">指定したサイズまで空き容量を減らす</string>
+    <string name="delete_button">元の空き容量に戻す</string>
+	<string name="available_capacity">空き容量：%1$d %2$s</string>
 </resources>

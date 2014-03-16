@@ -37,8 +37,8 @@
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/generate_button"
-        android:layout_toRightOf="@+id/generate_button"
+        android:layout_alignLeft="@+id/generate_button"
+        android:layout_below="@+id/generate_button"
         android:text="@string/delete_button" />
 
     <Spinner

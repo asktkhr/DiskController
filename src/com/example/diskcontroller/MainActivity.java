@@ -116,7 +116,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.delete_button:
 			if (deleteFile("dummy.txt")) {
-				Toast.makeText(this, "delete dummy file", Toast.LENGTH_LONG);
+				Toast.makeText(this, "Success!", Toast.LENGTH_LONG);
 				refreshView();
 			}
 			break;
@@ -127,19 +127,21 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void refreshView() {
 		getInternalStorageStatus();
 		int position = spinner.getSelectedItemPosition();
+		String availableCapacity = "";
 		switch (position) {
 		case ITEM_KB:
-			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)KB)) + " KB");
+			 availableCapacity = getString(R.string.available_capacity,(long)Math.ceil(availableByteSize / (float)KB), "KB");
 			break;
 		case ITEM_MB:
-			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)MB)) + " MB");
+			availableCapacity = getString(R.string.available_capacity, (long)Math.ceil(availableByteSize / (float)MB), "MB");
 			break;
 		case ITEM_GB:
-			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)GB)) + " GB");
+			availableCapacity = getString(R.string.available_capacity, (long)Math.ceil(availableByteSize / (float)GB), "GB");
 			break;
 		default:
-			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)KB)) + " KB");
+			 availableCapacity = getString(R.string.available_capacity, (long)Math.ceil(availableByteSize / (float)KB), "KB");
 		}
+		titleText.setText(availableCapacity);		
 
 	}
 
