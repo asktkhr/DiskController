@@ -51,7 +51,7 @@ public class SaveDataTask extends AsyncTask<Long, Void, Boolean> {
 			if(restByteSize <= 0){
 				fileByteSize = fileByteSize - i * chunkSize;
 				chunkSize = getChunkSize(fileByteSize);
-				divideCount = fileByteSize / chunkSize;
+				divideCount = (long)Math.ceil(fileByteSize / (float)chunkSize);
 				str = generateStr(chunkSize);
 				i = 0;
 			}

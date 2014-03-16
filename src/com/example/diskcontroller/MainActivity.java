@@ -129,16 +129,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		int position = spinner.getSelectedItemPosition();
 		switch (position) {
 		case ITEM_KB:
-			titleText.setText("available: " + String.valueOf(availableByteSize / KB) + " KB");
+			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)KB)) + " KB");
 			break;
 		case ITEM_MB:
-			titleText.setText("available: " + String.valueOf(availableByteSize / MB) + " MB");
+			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)MB)) + " MB");
 			break;
 		case ITEM_GB:
-			titleText.setText("available: " + String.valueOf(availableByteSize / GB) + " GB");
+			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)GB)) + " GB");
 			break;
 		default:
-			titleText.setText("available: " + String.valueOf(availableByteSize / KB) + " KB");
+			titleText.setText("available: " + String.valueOf((long)Math.ceil(availableByteSize / (float)KB)) + " KB");
 		}
 
 	}
