@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.diskcontroller"
+    package="com.example.diskcapacitycontroller"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true" >
         <activity
-            android:name="com.example.diskcontroller.MainActivity"
+            android:name="com.example.diskcapacitycontroller.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
